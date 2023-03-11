@@ -1,6 +1,6 @@
 # Detection-Segmentation-and-Feature-estimation-pipeline
 
-The scripts are based on the official [label studio and albumentation libraries ](https://albumentations.ai/).
+The scripts are based on the official [label studio](https://labelstud.io/) and [albumentation](https://albumentations.ai/) libraries.
 
 ## Annotation
 
@@ -17,7 +17,7 @@ The possible label types which Label Studio supports are:
 - "keypoints": keypoints stored in Keypoints fields
 - "segmentation": semantic segmentations stored in Segmentation fields
 
-Then start create a template by integrating keypoints configurations to polygon configuration code.
+Then create a template by integrating keypoints configurations to polygon configuration code.
 Use below code to enable both keypoint and polygon annotations in Label studio
 ``` 
 <View>
@@ -41,6 +41,8 @@ Run the annotation script to automatically augment a dataset using albumentation
 ``` 
 python scripts/pipelineNotebook.py
 ```
+
+Here are the list of arguments required for successful augmentation.
 - `json_file`: JSON file containing labels.
 - `image_root`: The directory containing the images.
 - `list_augmentations_file`: A file containing a list of albumentation augmmentations.
