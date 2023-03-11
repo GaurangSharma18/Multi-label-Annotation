@@ -53,4 +53,5 @@ Here are the list of arguments required for successful augmentation.
 - `hasSeg`: Annotation information, if dataset contains Polygon Segmentation: accepts binary values True/False.
 - `JSON_type`: accepts COCO or Custom. COCO to augment a COCO dataset, Custom to augments a fresh annotated dataset
 - `Split`: accepts binary values True/False.
+- `Val_Split`: Split percentage for the validation data: accepts value between 0-1.
 
