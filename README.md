@@ -55,3 +55,7 @@ Here are the list of arguments required for successful augmentation.
 - `Split`: accepts binary values True/False.
 - `Val_Split`: Split percentage for the validation data: accepts value between 0-1.
 
+Example:
+```
+python scripts/pipelineNotebook.py --json_file Dataset/AnnotatedJSON/AnnotatedJSON.json --image_root Dataset/AnnotatedImages --output_folder Dataset/aug --hasKeypoints True --hasBBox True --hasSeg True --Augmentation True --split False --Val_Split 0.5 --JSON_type Custom --list_augmentations_file notebook/Augmentations
+```
