@@ -57,5 +57,5 @@ Here are the list of arguments required for successful augmentation.
 
 Example:
 ```
-python scripts/pipelineNotebook.py --json_file Dataset/AnnotatedJSON/AnnotatedJSON.json --image_root Dataset/AnnotatedImages --output_folder Dataset/aug --hasKeypoints True --hasBBox True --hasSeg True --Augmentation True --split False --Val_Split 0.5 --JSON_type Custom --list_augmentations_file notebook/Augmentations
+python scripts/pipelineNotebook.py --json_file Dataset/AnnotatedJSON/AnnotatedJSON.json --image_root Dataset/AnnotatedImages --output_folder Dataset/aug --hasKeypoints True --hasBBox True --hasSeg True --Augmentation True --split False --Val_Split 0.5 --JSON_type Custom --list_augmentations_file Augmentations
 ```
