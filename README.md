@@ -37,9 +37,10 @@ Use below code to enable both keypoint and polygon annotations in Label studio
 
 ## Augmentation
 
-Run the annotation script to automatically augment a dataset using albumentation.
+Run the below script to automatically augment a dataset using albumentation library. Add or remove transforms using the augmentation text file. IT you wish to create masks as well, please use our jupyter notebook.
+
 ``` 
-python scripts/pipelineNotebook.py
+python scripts/augmentationScript.py
 ```
 
 Here are the list of arguments required for successful augmentation.
