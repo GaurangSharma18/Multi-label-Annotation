@@ -533,6 +533,8 @@ def CreateCOCOJSON_fromJSON_MIN(imgs_anns,path_toAug,json_file,ImageFolderPath,O
     for Count,val in enumerate(imgs_anns):
         objImgDesc, width, height, classNames, maxNumOfKeypoints = createCOCOdesc(val, maxNumOfKeypoints,hasSeg,hasBBox,JSONLabelwhichHasClassName,classNames)
         listOfImages.append(objImgDesc)
+        if hasKeypoints == False:
+            kpString = []
         listOfCategories = createCOCOCat(classNames, hasKeypoints, hasSeg, hasBBox, kpString) 
     listOfAnnotations = [] ## list of all image annotations
     listOfKeyPoints = []  ## list of all keypoints
@@ -597,6 +599,9 @@ def CreateCOCOJSON_fromJSON_MIN(imgs_anns,path_toAug,json_file,ImageFolderPath,O
                 area = []
                 bboxArray = []
             
+            if hasKeypoints == False:
+                obkps = []
+                ValidKeypoint = []
             listOfAnnotations = objDevelopment(listOfAnnotations,CountLabels,catID,hasKeypoints,hasSeg,hasBBox,ImgId,[poly],list(bboxArray[:4]),area,obkps,ValidKeypoint)
             if Augmentation == True:
                 listOfArea.append(area)
@@ -672,11 +677,11 @@ def appendAugJSONtoOriginalJSON(image_anns,image_def,imgs_anns):
 
 
 #if split == True:
-def Coco_split(imgs_anns, OutputFolder, imageSourcePath,testSplit):
+def Coco_split(processedAnnotations, OutputFolder, imageSourcePath,testSplit):
     listOffile_name = []
     listOfImageID = []
 
-    for CountGatherFileDEf,valGatherFileDEf in enumerate(imgs_anns['images']):
+    for CountGatherFileDEf,valGatherFileDEf in enumerate(processedAnnotations['images']):
         if "file_name" in valGatherFileDEf:
             listOffile_name.append(valGatherFileDEf['file_name'])
         
@@ -692,7 +697,7 @@ def Coco_split(imgs_anns, OutputFolder, imageSourcePath,testSplit):
     listOfImageID_train, listOfImageID_val, listOffile_name_train, listOffile_name_val = train_test_split(listOfImageID, listOffile_name, test_size=testSplit, random_state=1)    
     trainSetDef = []
     valSetDef = []
-    for CountSplitDef,valueSplitDef in enumerate(imgs_anns['images']):
+    for CountSplitDef,valueSplitDef in enumerate(processedAnnotations['images']):
         if valueSplitDef["id"] in listOfImageID_train:
             #print(val)
             trainSetDef.append(valueSplitDef)
@@ -702,7 +707,7 @@ def Coco_split(imgs_anns, OutputFolder, imageSourcePath,testSplit):
 
     trainSetAnnos = []
     valSetAnnos = []
-    for CountSplitAnnos,valueSplitAnnos in enumerate(imgs_anns['annotations']):
+    for CountSplitAnnos,valueSplitAnnos in enumerate(processedAnnotations['annotations']):
         if valueSplitAnnos["image_id"] in listOfImageID_train:
             trainSetAnnos.append(valueSplitAnnos)
         elif valueSplitAnnos["image_id"] in listOfImageID_val:
@@ -710,13 +715,13 @@ def Coco_split(imgs_anns, OutputFolder, imageSourcePath,testSplit):
             
     obj_train = {  ## Complete COCO Json structure
         "images":trainSetDef,
-        "categories":imgs_anns['categories'],
+        "categories":processedAnnotations['categories'],
         "annotations":trainSetAnnos
     }
     
     obj_val = {  ## Complete COCO Json structure
         "images":valSetDef,
-        "categories":imgs_anns['categories'],
+        "categories":processedAnnotations['categories'],
         "annotations":valSetAnnos
     }
     
@@ -761,7 +766,15 @@ def Coco_split(imgs_anns, OutputFolder, imageSourcePath,testSplit):
     #shutil.rmtree(path_toAug, ignore_errors=True)
     print("Train and Val Dataset saved!")
 
+def boolean_string(s):
+    if s not in {'False', 'True'}:
+        raise ValueError('Not a valid boolean string')
+    return s == 'True'
 
+def JSON_string(s):
+    if s not in {'Custom', 'COCO'}:
+        raise ValueError('Not a valid boolean string')
+    return s
 
 if __name__ == "__main__":
 
@@ -770,13 +783,13 @@ if __name__ == "__main__":
     parser.add_argument("--image_root", help="Path to the directory containing the images.", type=str)
     parser.add_argument("--list_augmentations_file", help="Path to a file containing a list of albumentation augmmentations.", type=str)
     parser.add_argument("--output_folder", help="Path to a folder to save the augmented images.", type=str)
-    parser.add_argument("--hasKeypoints", help="Annotation information, if dataset contains keypoints: accepts binary values True/False.", type=bool, default="True")
-    parser.add_argument("--hasBBox", help="Annotation information, if dataset contains Bounding Box: accepts binary values True/False.", type=bool, default="True")
-    parser.add_argument("--hasSeg", help="Annotation information, if dataset contains Polygon Segmentation: accepts binary values True/False.", type=bool, default="True")
-    parser.add_argument("--Augmentation", help="accepts binary values True/False.", type=bool)
-    parser.add_argument("--split", help="accepts binary values True/False.", type=bool)
+    parser.add_argument("--hasKeypoints", help="Annotation information, if dataset contains keypoints: accepts binary values True/False.", default=True, type=boolean_string)
+    parser.add_argument("--hasBBox", help="Annotation information, if dataset contains Bounding Box: accepts binary values True/False.", default=True, type=boolean_string)
+    parser.add_argument("--hasSeg", help="Annotation information, if dataset contains Polygon Segmentation: accepts binary values True/False.", default=True, type=boolean_string)
+    parser.add_argument("--Augmentation", help="accepts binary values True/False.", default=True, type=boolean_string)
+    parser.add_argument("--split", help="accepts binary values True/False.", default=True, type=boolean_string)
     parser.add_argument("--Val_Split", help="Split percentage for the validation data: accepts value between 0-1.", type=str, default="0.25")
-    parser.add_argument("--JSON_type", help="accepts COCO or Custom. COCO to augment a COCO dataset, Custom to augments a fresh annotated dataset.", type=str, default="Custom", choices=["Custom", "COCO"])
+    parser.add_argument("--JSON_type", help="accepts COCO or Custom. COCO to augment a COCO dataset, Custom to augments a fresh annotated dataset.", default="Custom", type=JSON_string)
     ## Ask the below inputs from the User
 
     args = parser.parse_args()
@@ -793,14 +806,14 @@ if __name__ == "__main__":
     split = args.split
     Val_Split = float(args.Val_Split)
     JSON_type = args.JSON_type
-
+    print('JSON_type',JSON_type)
     ## 1. Load the JSON file 
     ## 2. Load the augmentation file
     ## 3. Make a directory to save Augmented Images
     ## 4. Specify the maximum number of keypoints an Image could contain
 
     with open(json_file) as f:
-        imgs_anns = json.load(f)
+        img_annotations = json.load(f)
 
     if Augmentation == True:
         directory = "AugImages"
@@ -820,16 +833,18 @@ if __name__ == "__main__":
     maxNumOfKeypoints = 0
     if hasKeypoints == True:
         VisualizeKeypoints = True   ## give only if your dataset has keypoints   ##Argument 8
-
+    processedAnnotations = []
     if JSON_type == "Custom":
-        imgs_anns = CreateCOCOJSON_fromJSON_MIN(imgs_anns,path_toAug,json_file,image_root,output_folder,hasKeypoints,hasBBox,hasSeg,Augmentation,maxNumOfKeypoints)
+        processedAnnotations = CreateCOCOJSON_fromJSON_MIN(img_annotations,path_toAug,json_file,image_root,output_folder,hasKeypoints,hasBBox,hasSeg,Augmentation,maxNumOfKeypoints)
     elif JSON_type == "COCO":
-        imgs_anns = AugmentCOCO(imgs_anns,path_toAug,json_file,image_root,output_folder,hasKeypoints,hasBBox,hasSeg,Augmentation,maxNumOfKeypoints)
+        processedAnnotations = AugmentCOCO(img_annotations,path_toAug,json_file,image_root,output_folder,hasKeypoints,hasBBox,hasSeg,Augmentation,maxNumOfKeypoints)
+    else:
+        print('here')
+        processedAnnotations = img_annotations
+    
 
-    print('args.Augmentation',args.Augmentation)
-    print('args.split',args.split)
     if split == True:
-        Coco_split(imgs_anns, output_folder, image_root,Val_Split)
+        Coco_split(processedAnnotations, output_folder, path_toAug,Val_Split)
         if Augmentation == True:
             JsonPathAug = output_folder +"CocoAugJSON"
             shutil.rmtree(path_toAug, ignore_errors=True)
