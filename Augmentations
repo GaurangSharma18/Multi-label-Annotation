@@ -1,0 +1,1 @@
+GaussNoise (var_limit=(10.0, 100.0), mean=0, per_channel=True, p=1)
