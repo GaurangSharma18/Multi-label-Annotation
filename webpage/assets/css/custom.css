@@ -1,0 +1,225 @@
+html {
+    font-size: 62.5%;
+    /* font-size 1em = 10px on default browser settings */
+}
+
+body {
+    font-size: 1.6rem;
+    /*margin: 3rem 1rem; */
+    background-color: #14213d;
+    color: #000;
+    font-family: "source serif pro",serif;
+}
+
+main {
+    margin-bottom: 2rem;
+}
+
+.paperBody {
+    margin: 0 auto;
+    background-color: #fff;
+    width: 90%;
+    margin-top: 5rem;
+    border-radius: 1.5rem;
+    color: #14213d;
+    padding: 2rem;
+}
+
+.paperTitle {
+    font-size: 3.6rem;
+    padding: 6rem 2rem 0.5rem 2rem;
+    /* width: 101%; */
+    text-align: center;
+    font-weight: bold;
+}
+
+.paperAuthors {
+    text-align: center;
+    font-size: 2.4rem;
+    padding: 0.5rem;
+}
+
+.paperAuthors a{
+  color:#14213d;
+}
+
+.authorship {
+    font-size: 1.4rem;
+}
+
+.heroButtons {
+    background-color:#14213d;
+    padding: 1rem 3rem;
+    width: fit-content;
+    border-radius: 2rem;
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+.heroButtons a{
+    color:#fff;
+}
+
+.buttonIcons {
+    display: inline-block;
+    width: 1.6rem;
+    margin-right: 0.5rem;
+    vertical-align: bottom;
+}
+
+.buttonTitle {
+    display: inline-block;
+}
+
+.heroButtons .icon{
+    width:2.2rem;
+}
+
+.paperLinks {
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+.heroButtons a:hover{
+    text-decoration: none;
+}
+
+.paperHeadings{
+    font-size: 2.4rem;
+    font-weight: bold;
+}
+.headDesc {
+    font-size: 1.8rem;
+    text-align: justify;
+}
+
+.paperSectionWrapper {
+  padding: 0rem 4rem;
+  width: 100%;
+  display: inline-block;
+}
+
+
+.detailsWrapper{
+  padding: 8rem;
+}
+
+.imageStyling {
+  width:30rem;
+}
+
+
+.frontPageImages{
+  width:25%;
+  display:inline-block;
+}
+
+
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+
+
+.vertical-nav {
+    min-width: 17rem;
+    width: 17rem;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s;
+  }
+  */
+  
+  .vertical-nav {
+    min-width: 20rem;
+    width: 30rem;
+    height: 40rem;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s;
+  }
+
+
+  
+  /* for toggle behavior 
+  
+  #sidebar.active {
+    margin-left: -40%;
+    margin-right: 15%;
+  }
+  
+*/
+
+  .toggleNav {
+    background-color: #14213d;
+    display:inline-block;
+    width: 24%;
+    margin-right: 2rem;
+    border-radius: 1.5rem;
+  }
+
+
+  .contentWrapper {
+    display: inline-block;
+    width: 70%;
+    vertical-align: top;
+  }
+  
+
+  /*
+  @media (max-width: 768px) {
+    #sidebar {
+      margin-left: -17rem;
+    }
+    #sidebar.active {
+      margin-left: 0;
+    }
+    #content {
+      width: 100%;
+      margin: 0;
+    }
+    #content.active {
+      margin-left: 17rem;
+      width: calc(100% - 17rem);
+    }
+  }
+
+  */
+  
+
+
+
+
+
+.navListItem {
+  padding:3rem 4rem 2rem 4rem;
+  font-size: 1.8rem;
+  color:#fff;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1000px) {
+ 
+}
+
+
+/* display 3 */
+@media (min-width: 768px) {
+
+}
