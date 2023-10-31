@@ -58,7 +58,6 @@
                         <div class="buttonTitle">Code</div>
                     </a>
                 </div>
-                
                 <!--div class="page-content heroButtons" id="sidebarCollapse">
                    
                     <a href="#">
@@ -157,17 +156,17 @@
                         <div class="RelatedWork d-none">
                             <div class="paperHeadings">Related Work</div>
                             <div class="headDesc">
-                                <div id="accordion">
+                                <div id="accordionRelatedWork" class="accordion">
                                     <div class="card">
-                                      <div class="card-header" id="headingOne">
+                                      <div class="card-header" id="headingOneRelatedWork">
                                         <h5 class="mb-0">
-                                          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOneRelatedWork" aria-expanded="true" aria-controls="collapseOneRelatedWork">
                                             Multi-task Learning
                                           </button>
                                         </h5>
                                       </div>
                                   
-                                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                      <div id="collapseOneRelatedWork" class="collapse show" aria-labelledby="headingOneRelatedWork" data-parent="#accordionRelatedWork">
                                         <div class="card-body">
                                             Multi-task learning [5] in the field of computer vision
                                             [6] has shown recent success with methods such as CrossStitch [18] and UberNet [19]. As comparison, single-task
@@ -184,14 +183,14 @@
                                       </div>
                                     </div>
                                     <div class="card">
-                                      <div class="card-header" id="headingTwo">
+                                      <div class="card-header" id="headingTwoRelatedWork">
                                         <h5 class="mb-0">
-                                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwoRelatedWork" aria-expanded="false" aria-controls="collapseTwoRelatedWork">
                                             Image Annotation and Storing Formats
                                           </button>
                                         </h5>
                                       </div>
-                                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                      <div id="collapseTwoRelatedWork" class="collapse" aria-labelledby="headingTwoRelatedWork" data-parent="#accordionRelatedWork">
                                         <div class="card-body">
                                             Labeling data is a critical component for deep learning
                                             as it provides the ground truth for estimating errors. Incorrectly labeled datasets lead to poor training and higher
@@ -223,14 +222,14 @@
                                       </div>
                                     </div>
                                     <div class="card">
-                                      <div class="card-header" id="headingThree">
+                                      <div class="card-header" id="headingThreeRelatedWork">
                                         <h5 class="mb-0">
-                                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThreeRelatedWork" aria-expanded="false" aria-controls="collapseThreeRelatedWork">
                                             Image Augmentation
                                           </button>
                                         </h5>
                                       </div>
-                                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                      <div id="collapseThreeRelatedWork" class="collapse" aria-labelledby="headingThreeRelatedWork" data-parent="#accordionRelatedWork">
                                         <div class="card-body">
                                             Data augmentation is a form of data expansion that can
                                             improve model performance by assisting in its generalization,
@@ -246,14 +245,14 @@
                                       </div>
                                     </div>
                                     <div class="card">
-                                        <div class="card-header" id="headingThree">
+                                        <div class="card-header" id="headingFourRelatedWork">
                                           <h5 class="mb-0">
-                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFourRelatedWork" aria-expanded="false" aria-controls="collapseFourRelatedWork">
                                                 Object detection and Pose estimation
                                             </button>
                                           </h5>
                                         </div>
-                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                        <div id="collapseFourRelatedWork" class="collapse" aria-labelledby="headingFourRelatedWork" data-parent="#accordionRelatedWork">
                                           <div class="card-body">
                                             Traditionally, keypoint estimation, segmentation, and object detection were considered separate problems. The solution for object detection evolved in the last 20 years
                                             from hand-crafted features to deformable transformers [29].
@@ -281,17 +280,17 @@
                                 formats and the export of these in a generic format, for
                                 training a multi-task detection model.
 
-                                <div id="accordion">
+                                <div id="accordionMethodology" class="accordion">
                                     <div class="card">
-                                        <div class="card-header" id="headingOne">
+                                        <div class="card-header" id="headingOneMethodology">
                                           <h5 class="mb-0">
-                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOneMethodology" aria-expanded="true" aria-controls="collapseOneMethodology">
                                                 Architecture
                                             </button>
                                           </h5>
                                         </div>
                                     
-                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div id="collapseOneMethodology" class="collapse show" aria-labelledby="headingOneMethodology" data-parent="#accordionMethodology">
                                           <div class="card-body">
                                             The multi-task architecture of ResNet-50 FPN Keypoint
                                             R-CNN [34] supports the combined data annotations and is
@@ -300,18 +299,19 @@
                                             object recognition, segmentation and feature extraction at the
                                             same time
                                           </div>
+                                          <div class="accordianImageWrapper"><img class="accordianImage" src="assets/images/architecture.png" alt="Multitask model architecture"/> </div>
                                         </div>
                                       </div>
                                       <div class="card">
-                                        <div class="card-header" id="headingOne">
+                                        <div class="card-header" id="headingTwoMethodology">
                                           <h5 class="mb-0">
-                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwoMethodology" aria-expanded="false" aria-controls="collapseTwoMethodology">
                                                 Data Annotation
                                             </button>
                                           </h5>
                                         </div>
                                     
-                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div id="collapseTwoMethodology" class="collapse" aria-labelledby="headingTwoMethodology" data-parent="#accordionMethodology">
                                           <div class="card-body">
                                             Our pipeline starts with the image annotation of polygons,
                                             key points and bounding boxes in Label Studio. As Label
@@ -327,15 +327,15 @@
                                         </div>
                                       </div>
                                       <div class="card">
-                                        <div class="card-header" id="headingOne">
+                                        <div class="card-header" id="headingThreeMethodology">
                                           <h5 class="mb-0">
-                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThreeMethodology" aria-expanded="false" aria-controls="collapseThreeMethodology">
                                                 Data Augmentation
                                             </button>
                                           </h5>
                                         </div>
                                     
-                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div id="collapseThreeMethodology" class="collapse" aria-labelledby="headingThreeMethodology" data-parent="#accordionMethodology">
                                           <div class="card-body">
                                             Tools such as Albumentations [8] offer a wide range of
                                             image transformations. However, it does not offer augmentation support for polygon and run-length encoding COCO
@@ -364,17 +364,17 @@
                         <div class="Results d-none">
                             <div class="paperHeadings">Results</div>
                             <div class="headDesc">
-                                <div id="accordion">
+                                <div id="accordionResults" class="accordion">
                                     <div class="card">
-                                      <div class="card-header" id="headingOne">
+                                      <div class="card-header" id="headingOneResults">
                                         <h5 class="mb-0">
-                                          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOneResults" aria-expanded="true" aria-controls="collapseOneResults">
                                             Practical Use Cases and System Integration
                                           </button>
                                         </h5>
                                       </div>
                                   
-                                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                      <div id="collapseOneResults" class="collapse show" aria-labelledby="headingOneResults" data-parent="#accordionResults">
                                         <div class="card-body">
                                             The use cases aim to detect different objects for automation purposes. Two assembly sets are selected including a
                                             diesel engine and a planetary gearbox, and their internal
@@ -394,15 +394,15 @@
                                       </div>
                                     </div>
                                     <div class="card">
-                                        <div class="card-header" id="headingOne">
+                                        <div class="card-header" id="headingTwoResults">
                                           <h5 class="mb-0">
-                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwoResults" aria-expanded="false" aria-controls="collapseTwoResults">
                                                 Object and Key point Detection
                                             </button>
                                           </h5>
                                         </div>
                                     
-                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div id="collapseTwoResults" class="collapse" aria-labelledby="headingTwoResults" data-parent="#accordionResults">
                                           <div class="card-body">
                                             Fig. 3b and 3d present the output of the trained multitask models on the two use cases with results for object
                                             detection and segmentation, and key point estimations. This
@@ -419,15 +419,15 @@
                                         </div>
                                       </div>
                                       <div class="card">
-                                        <div class="card-header" id="headingOne">
+                                        <div class="card-header" id="headingThreeResults">
                                           <h5 class="mb-0">
-                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThreeResults" aria-expanded="false" aria-controls="collapseThreeResults">
                                                 Object Configuration and Depth Estimation
                                             </button>
                                           </h5>
                                         </div>
                                     
-                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div id="collapseThreeResults" class="collapse" aria-labelledby="headingThreeResults" data-parent="#accordionResults">
                                           <div class="card-body">
                                             Two further functionalities are developed to demonstrate
                                             the use of multiple detection format outputs from the multitask model. These are object configuration and depth estimation, based on the object segmentation masks and key points,
@@ -456,15 +456,15 @@
                                         </div>
                                       </div>
                                       <div class="card">
-                                        <div class="card-header" id="headingOne">
+                                        <div class="card-header" id="headingFourResults">
                                           <h5 class="mb-0">
-                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseFourResults" aria-expanded="false" aria-controls="collapseFourResults">
                                                 Discussion
                                             </button>
                                           </h5>
                                         </div>
                                     
-                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div id="collapseFourResults" class="collapse" aria-labelledby="headingFourResults" data-parent="#accordionResults">
                                           <div class="card-body">
                                             The proposed approach enables images to be annotated by
                                             multiple different labels, including bounding boxes, polygons
