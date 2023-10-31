@@ -19,44 +19,59 @@ $(document).ready(function() {
   $( ".resultHead" ).click(function() {
     console.log('clicked')
     $('.abstract').addClass('d-none');
-    $('.Contributions').addClass('d-none');
-    $('.ProblemStatemen').addClass('d-none');
+    $('.Introduction').addClass('d-none');
+    $('.RelatedWork').addClass('d-none');
     $('.Methodology').addClass('d-none');
+    $('.refrences').addClass('d-none');
     $('.Results').removeClass('d-none');
   });
 
   $( ".abstractHead" ).click(function() {
     console.log('clicked')
-    $('.Contributions').addClass('d-none');
-    $('.ProblemStatemen').addClass('d-none');
+    $('.Introduction').addClass('d-none');
+    $('.RelatedWork').addClass('d-none');
     $('.Methodology').addClass('d-none');
     $('.Results').addClass('d-none');
+    $('.refrences').addClass('d-none');
     $('.abstract').removeClass('d-none');
   });
 
   $( ".contributionHead" ).click(function() {
     console.log('clicked')
     $('.abstract').addClass('d-none');
-    $('.ProblemStatemen').addClass('d-none');
+    $('.RelatedWork').addClass('d-none');
     $('.Methodology').addClass('d-none');
     $('.Results').addClass('d-none');
-    $('.Contributions').removeClass('d-none');
+    $('.refrences').addClass('d-none');
+    $('.Introduction').removeClass('d-none');
   });
 
   $( ".probStatHead" ).click(function() {
     console.log('clicked')
     $('.abstract').addClass('d-none');
-    $('.Contributions').addClass('d-none');
+    $('.Introduction').addClass('d-none');
     $('.Methodology').addClass('d-none');
     $('.Results').addClass('d-none');
-    $('.ProblemStatemen').removeClass('d-none');
+    $('.refrences').addClass('d-none');
+    $('.RelatedWork').removeClass('d-none');
   });
 
   $( ".methodHead" ).click(function() {
     console.log('clicked')
     $('.abstract').addClass('d-none');
-    $('.Contributions').addClass('d-none');
-    $('.ProblemStatemen').addClass('d-none');
+    $('.Introduction').addClass('d-none');
+    $('.RelatedWork').addClass('d-none');
     $('.Results').addClass('d-none');
+    $('.refrences').addClass('d-none');
     $('.Methodology').removeClass('d-none');
+  });
+
+  $( ".refrencesHead" ).click(function() {
+    console.log('clicked')
+    $('.abstract').addClass('d-none');
+    $('.Introduction').addClass('d-none');
+    $('.RelatedWork').addClass('d-none');
+    $('.Results').addClass('d-none');
+    $('.Methodology').addClass('d-none');
+    $('.refrences').removeClass('d-none');
   });
