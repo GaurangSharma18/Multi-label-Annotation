@@ -22,7 +22,7 @@ main {
     margin-top: 5rem;
     border-radius: 1.5rem;
     color: #14213d;
-    padding: 2rem;
+    padding: 2rem 5%;
 }
 
 .paperTitle {
@@ -58,6 +58,10 @@ main {
 
 .heroButtons a{
     color:#fff;
+}
+
+.heroButtons a:hover{
+  color:#FFE5B4;
 }
 
 .buttonIcons {
@@ -139,7 +143,7 @@ main {
   .vertical-nav {
     min-width: 20rem;
     width: 30rem;
-    height: 40rem;
+    height: auto;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.5s;
   }
@@ -203,23 +207,68 @@ main {
   cursor: pointer;
 }
 
+.navListItem:hover {
+  color:#FFE5B4;
+  border-radius: 1.2rem;
+}
+
+.RelatedWork #accordion .card, .Methodology #accordion .card, .Results #accordion .card {
+  border-radius: 1.5rem;
+  margin-bottom: 1rem;
+}
+.RelatedWork #accordion .card-header, .Methodology #accordion .card-header, .Results #accordion .card-header {
+  background-color: #14213d;
+  border-radius: 1.5rem;
+}
 
 
+.RelatedWork #accordion .card-header .btn-link, .Methodology #accordion .card-header .btn-link, .Results #accordion .card-header .btn-link {
+  
+  font-size: 1.6rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.RelatedWork #accordion .card-header .btn-link:hover, .Methodology #accordion .card-header .btn-link:hover, .Results #accordion .card-header .btn-link:hover {
+  text-decoration: none;
+  color:#FFE5B4;
+}
+
+.accordianImageWrapper {
+  text-align: center;
+}
+
+.motivationImage {
+  width:100%;
+  margin:1rem;
+}
 
 
+.accordianImage {
+  width:100%;
+  margin:2rem;
+}
 
-
-
-
+.WrapText {
+  float:right;
+  width: 45%;
+}
 
 
 
 @media (max-width: 1000px) {
- 
+  .detailsWrapper{
+    padding:0;
+  }
+  .vertical-nav{
+    min-width: 15rem;
+  }
 }
 
 
 /* display 3 */
 @media (min-width: 768px) {
-
+  .detailsWrapper{
+    padding:0;
+  }
 }
