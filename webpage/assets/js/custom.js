@@ -17,7 +17,6 @@ $(document).ready(function() {
 
 
   $( ".resultHead" ).click(function() {
-    console.log('clicked')
     $('.abstract').addClass('d-none');
     $('.Introduction').addClass('d-none');
     $('.RelatedWork').addClass('d-none');
@@ -27,7 +26,6 @@ $(document).ready(function() {
   });
 
   $( ".abstractHead" ).click(function() {
-    console.log('clicked')
     $('.Introduction').addClass('d-none');
     $('.RelatedWork').addClass('d-none');
     $('.Methodology').addClass('d-none');
@@ -37,7 +35,6 @@ $(document).ready(function() {
   });
 
   $( ".contributionHead" ).click(function() {
-    console.log('clicked')
     $('.abstract').addClass('d-none');
     $('.RelatedWork').addClass('d-none');
     $('.Methodology').addClass('d-none');
@@ -47,7 +44,6 @@ $(document).ready(function() {
   });
 
   $( ".probStatHead" ).click(function() {
-    console.log('clicked')
     $('.abstract').addClass('d-none');
     $('.Introduction').addClass('d-none');
     $('.Methodology').addClass('d-none');
@@ -57,7 +53,6 @@ $(document).ready(function() {
   });
 
   $( ".methodHead" ).click(function() {
-    console.log('clicked')
     $('.abstract').addClass('d-none');
     $('.Introduction').addClass('d-none');
     $('.RelatedWork').addClass('d-none');
@@ -67,7 +62,6 @@ $(document).ready(function() {
   });
 
   $( ".refrencesHead" ).click(function() {
-    console.log('clicked')
     $('.abstract').addClass('d-none');
     $('.Introduction').addClass('d-none');
     $('.RelatedWork').addClass('d-none');
@@ -77,6 +71,5 @@ $(document).ready(function() {
   });
 
   $( ".navMenuIconWrapper a" ).click(function() {
-    console.log('clicked')
     $('.navList').toggleClass('d-block');
   });
