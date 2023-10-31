@@ -14,10 +14,9 @@
 <body>
     <main>
         <section class="paperBody">
-            <div class="paperTitle">Detection, Segmentation, and Feature estimation pipeline for deep multitask learning
-                models</div>
+            <div class="paperTitle">Multi-label Annotation for Visual Multi-Task Learning Models</div>
             <div class="paperAuthors">
-                <span class="author"><a href="https://gaurangsharma18.github.io/website/official/index.html" target="_blank">Gaurang Sharma</a><sup class="authorship">1</sup></span>
+                <span class="author"><a href="https://gaurangsharma18.github.io/website/official/index.html" target="_blank">Gaurang Sharma</a><sup class="authorship">1</sup>,</span>
                 <span class="author"><a href="https://scholar.google.com/citations?user=B9poInQAAAAJ&hl=en" target="_blank">Alexandre Angleraud</a><sup class="authorship">1</sup></span>
                 <span> and</span>
                 <span class="author"><a href="https://scholar.google.com/citations?user=YYKF6BYAAAAJ&hl=en" target="_blank">Roel Pieters</a><sup class="authorship">1</sup></span>
@@ -76,16 +75,19 @@
                         Abstract
                     </div>
                     <div class="navListItem contributionHead">
-                        Contributions
+                        Introduction
                     </div>
                     <div class="navListItem probStatHead">
-                       Problem Statement
+                       Related Work
                     </div>
                     <div class="navListItem methodHead">
                         Methodology
                     </div>
                     <div class="navListItem resultHead">
                         Results
+                    </div>
+                    <div class="navListItem refrencesHead">
+                        Refrences
                     </div>
                 </div>
                 </div>
@@ -94,50 +96,424 @@
                     <div class="paperSectionWrapper">
                         <div class="abstract">
                             <div class="paperHeadings">Abstract</div>
-                            <div class="headDesc">Deep Learning has led to significant advances in computer vision, making
-                                perception an important component in many fields such as robotics, medicine, agriculture, remote
-                                sensing, etc. As Deep Learning requires large amounts of data, a well-defined pipeline for labeling
-                                and augmentation is needed as well. Several data labeling and augmentation strategies exist,
-                                supporting numerous computer vision tasks with dedicated formats and annotation types, such as
-                                bounding boxes, polygons, and keypoints. Image annotation types can even be combined into a single
-                                data format to benefit approaches such as multi-task models. However, generating a combination of
-                                such annotations is not straight-forward, as no single solution or tool provides these
-                                functionalities. To our knowledge, no available labeling tool supports the export functionality for
-                                a combined format, and no augmentation library supports transformations for the combination of
-                                polygon segmentation, bounding boxes, and keypoints.
-                                In this paper, we present a novel approach that spans from labeling to augmentation. The paper also
-                                provides additional functionality to the tools/libraries used, which enables them to perform
-                                valuable tasks that require object detection, segmentation, and feature extraction in a single
-                                application. Finally, The functionality and the use of this pipeline in various computer vision and
-                                robotics tasks are presented in the paper.
+                            <div class="headDesc">Deep learning requires large amounts of data, and a well-defined pipeline for labeling and augmentation. Current solutions support numerous computer vision tasks with dedicated annotation types and formats, such as bounding boxes, polygons, and key points. These annotations can be combined into a single data format to benefit approaches such as multi-task models. However, 
+                                to our knowledge, no available labeling tool supports the export functionality for a combined benchmark format, and no augmentation library supports transformations for the combination of all. In this work, these functionalities are presented, with visual data annotation and augmentation to train a multi-task model (object detection, segmentation, and key point extraction). The tools are demonstrated in two robot perception use cases.
                             </div>
                         </div>
 
 
-                        <div class="Contributions d-none">
-                            <div class="paperHeadings">Contributions</div>
+                        <div class="Introduction d-none">
+                            <div class="paperHeadings">Introduction</div>
                             <div class="headDesc">
+                                <div class="motivationImageWrapper WrapText"><img class="motivationImage" src="assets/images/motivation.png"></div>
+                                Advancements in deep learning have helped to address
+                                numerous problems in different domains (e.g., robotics [1],
+                                medicine [2] and agriculture [3]). Perception in particular
+                                has been of major focus, where single purpose models
+                                have been optimized and fine-tuned for one specific task at
+                                hand [4]. More recently also multi-task models have been
+                                developed [5], [6], where a shared model concurrently learns
+                                multiple tasks. A fundamental aspect of these models is to
+                                increase data efficiency, reduce overfitting, and enable quick
+                                learning due to the use of auxiliary information. They use a
+                                unified single backbone structure having multiple descriptive
+                                heads to address technical computer vision challenges like
+                                boundary detection, semantic segmentation, object detection, etc. To effectively utilize multi-task models, multilabel annotations should be supported by the framework.
+                                This implies that images and the objects inside them can
+                                be annotated with multiple different labels (e.g., bounding
+                                boxes, polygons and key points), to be used for learning
+                                different tasks and thus generate multiple outputs. Compared
+                                to single-task models this is less computationally expensive
+                                and requires less annotated records. In addition, multiple
+                                outputs per image or object provides additional information
+                                compared to single-task models. Fig. 1 depicts this visually
+                                in an object detection problem. Two objects are annotated
+                                and correctly detected, however, in this context, the lower
+                                object is incorrectly placed. From detection or segmentation
+                                alone, this cannot be determined, yet with the estimated
+                                key points as additional information (i.e., three blue points),
+                                incorrect placement can be detected. Existing labeling and
+                                annotation solutions [7] do not provide the combined annotation export functionality, which results in solutions that
+                                combine several export formats to accomplish a common
+                                task. This served as motivation for the development of a novel data pipeline to provide domain-specific annotation and
+                                augmentation strategies. Best-of-breed libraries such as Albumentation [8] and Label Studio [9] are integrated to create
+                                a generic data generation solution for training deep learning
+                                models. Our developments are evaluated by applications in
+                                object detection, object configuration estimation and depth
+                                estimation. In this work, our contributions are:
+                                <ol>
+                                    <li>A novel pipeline that enables labeling of image
+                                        datasets with different annotations and formats</li>
+                                    <li>The augmentation of this dataset without conversion to
+                                        different formats</li>
+                                    <li>The validation of results in two industrial use cases
+                                        with different computer vision tasks</li>
+                                  </ol> 
                             </div>
+                           
                         </div>
 
-                        <div class="ProblemStatemen d-none">
-                            <div class="paperHeadings">Problem Statement</div>
+                        <div class="RelatedWork d-none">
+                            <div class="paperHeadings">Related Work</div>
                             <div class="headDesc">
+                                <div id="accordion">
+                                    <div class="card">
+                                      <div class="card-header" id="headingOne">
+                                        <h5 class="mb-0">
+                                          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Multi-task Learning
+                                          </button>
+                                        </h5>
+                                      </div>
+                                  
+                                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div class="card-body">
+                                            Multi-task learning [5] in the field of computer vision
+                                            [6] has shown recent success with methods such as CrossStitch [18] and UberNet [19]. As comparison, single-task
+                                            models are more expensive to train and require a larger
+                                            amount of annotated data than multi-task models. Moreover,
+                                            knowing which tasks should be trained together could aid
+                                            in improving prediction quality and acting as a preventative
+                                            measure against the occurrence of negative transfer [20].
+                                            Performance improvement of a specific task can thus lead
+                                            to performance degradation of other tasks [21]. Currently,
+                                            libraries such as YOLOR [22] and YOLOv7 [11] provide
+                                            configuration features to facilitate multi-task learning.
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="card">
+                                      <div class="card-header" id="headingTwo">
+                                        <h5 class="mb-0">
+                                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Image Annotation and Storing Formats
+                                          </button>
+                                        </h5>
+                                      </div>
+                                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <div class="card-body">
+                                            Labeling data is a critical component for deep learning
+                                            as it provides the ground truth for estimating errors. Incorrectly labeled datasets lead to poor training and higher
+                                            validation losses [23]. Nowadays, there are several machine
+                                            learning based tools available that speed up the automatic
+                                            labeling process and reduce human labor and time [24].
+                                            MS COCO [10], PASCAL VOC [12], and YOLO are some
+                                            commonly used benchmarks with different storage format
+                                            styles. MS COCO is a rich (.json) format that offers a large
+                                            variety of annotation storing structures. PASCAL VOC, on
+                                            the other hand, supports a (.xml) structure that is useful
+                                            for detection and segmentation tasks but has limitations in
+                                            supporting key points. YOLO models accept (.txt) file format
+                                            for detection tasks, however, YOLOv7 [11] accepts polygon
+                                            segmentation and key point representations as well. While
+                                            numerous labeling tools are available, each provides support
+                                            for different export formats and annotation types (see Table
+                                            I). For example, only a few tools offer direct labeling options
+                                            for polygon segmentation, bounding boxes and key points
+                                            simultaneously. And when the opportunity is provided, only
+                                            a combined JSON export format is available, thereby not
+                                            directly supporting state-of-the-art deep learning libraries. As
+                                            a result, custom data loaders need to be developed to enable
+                                            library-specific data formats.
+                                            
+                                            <div class="accordianImageWrapper"><img class="accordianImage" src="assets/images/SurveyTable.png" alt="Annotation Tools Survey Table"/> </div>
+                                            
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="card">
+                                      <div class="card-header" id="headingThree">
+                                        <h5 class="mb-0">
+                                          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            Image Augmentation
+                                          </button>
+                                        </h5>
+                                      </div>
+                                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                        <div class="card-body">
+                                            Data augmentation is a form of data expansion that can
+                                            improve model performance by assisting in its generalization,
+                                            robustness and convergence. While augmentation is a wellknown approach, libraries such as TensorFlow [25] and
+                                            PyTorch [26] provide very few transformation strategies.
+                                            Albumentations [8], on the other hand provides around six different libraries to apply a broad range of transformations
+                                            within a single tool. However, if custom and complex transformations are required, then libraries like OpenCV [27] can
+                                            be utilized for basic image manipulation algorithms. Smart
+                                            augmentation techniques also exist [28], in which suitable
+                                            augmentations are learned during the process of training a
+                                            deep neural network
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="headingThree">
+                                          <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                Object detection and Pose estimation
+                                            </button>
+                                          </h5>
+                                        </div>
+                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                          <div class="card-body">
+                                            Traditionally, keypoint estimation, segmentation, and object detection were considered separate problems. The solution for object detection evolved in the last 20 years
+                                            from hand-crafted features to deformable transformers [29].
+                                            Research on segmentation started with thresholding and later
+                                            led to methods such as semantic, instance, and panoptic
+                                            segmentation. On the other hand, local features, called keypoints, became popular through corner and edge detectors
+                                            [30], and today there are several ways to predict them,
+                                            including Faster R-CNN [31], which is based on local
+                                            keypoints. In the field of robotics and computer vision, segmentation masks are used to predict keypoints, as presented
+                                            in [32]. Recently, combinations of both to predict human and
+                                            object poses is addressed by [33]. In this, COCO is used as
+                                            the primary format, emphasizing its relevance.
+                                          </div>
+                                        </div>
+                                      </div>
+                                  </div>
                             </div>
                         </div>
 
                         <div class="Methodology d-none">
                             <div class="paperHeadings">Methodology</div>
                             <div class="headDesc">
+                                In this section, we present our methodology which enables
+                                the annotation of images with multiple labels in multiple
+                                formats and the export of these in a generic format, for
+                                training a multi-task detection model.
+
+                                <div id="accordion">
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                          <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                Architecture
+                                            </button>
+                                          </h5>
+                                        </div>
+                                    
+                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                          <div class="card-body">
+                                            The multi-task architecture of ResNet-50 FPN Keypoint
+                                            R-CNN [34] supports the combined data annotations and is
+                                            utilized for training the detection model (see Fig. 2). The
+                                            output of the model contains all three detection formats, for
+                                            object recognition, segmentation and feature extraction at the
+                                            same time
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                          <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                Data Annotation
+                                            </button>
+                                          </h5>
+                                        </div>
+                                    
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                          <div class="card-body">
+                                            Our pipeline starts with the image annotation of polygons,
+                                            key points and bounding boxes in Label Studio. As Label
+                                            Studio does not provide the functionality for simultaneously annotating features for polygons and key points, our
+                                            approach updates polygon configurations by adding a key
+                                            points configuration script to the user interface, maintaining
+                                            a single image via the 'toName' attribute. Bounding boxes
+                                            are extracted from the polygon annotations by selecting the
+                                            outer bounds of the polygon coordinates. Following, all annotations are exported into a JSON-min format and converted
+                                            into COCO format, containing all three data annotation types
+                                            in a single output format.
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                          <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                Data Augmentation
+                                            </button>
+                                          </h5>
+                                        </div>
+                                    
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                          <div class="card-body">
+                                            Tools such as Albumentations [8] offer a wide range of
+                                            image transformations. However, it does not offer augmentation support for polygon and run-length encoding COCO
+                                            formats, limiting the support for an integrated augmentation
+                                            strategy. To enable the augmentation of multi-label annotated
+                                            data, such as bounding boxes, key points and COCO segmentation formats, the following steps are performed. First, the
+                                            combined data (in COCO format) is loaded and extracted
+                                            into separate arrays, such as bounding boxes, key points,
+                                            area, etc. Second, polygons are converted to key points
+                                            and appended to a key point array. Third, the conversion
+                                            of (x,y) key points to (x,y,v) is done to maintain COCO
+                                            standards, followed by appending invisible key points to
+                                            keep the number of labeled key points the same. Dataset
+                                            augmentation is then performed using Albumentation’s key
+                                            point transformation strategy, after which the key points
+                                            are converted back to polygons. As a result, this procedure
+                                            enables the transformation of COCO polygon format by the
+                                            Albumentation library
+                                          </div>
+                                        </div>
+                                      </div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="Results d-none">
                             <div class="paperHeadings">Results</div>
                             <div class="headDesc">
+                                <div id="accordion">
+                                    <div class="card">
+                                      <div class="card-header" id="headingOne">
+                                        <h5 class="mb-0">
+                                          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Practical Use Cases and System Integration
+                                          </button>
+                                        </h5>
+                                      </div>
+                                  
+                                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div class="card-body">
+                                            The use cases aim to detect different objects for automation purposes. Two assembly sets are selected including a
+                                            diesel engine and a planetary gearbox, and their internal
+                                            parts (e.g., rocker arms, pushrods, bolts, gears, housing,
+                                            etc.). The diesel engine [35] and planetary gearbox [36]
+                                            datasets contain 195 and 150 RGB images, respectively,
+                                            manually annotated by drawing polygons and labeling key
+                                            points (see Fig. 3a and 3c). Augmentation is then performed
+                                            on the annotated data by different transformation strategies,
+                                            completing datasets of 280,000 and 170,000 images. Training
+                                            of the multi-task models followed typical training and evaluation steps [34] with hyper-parameters such as momentum,
+                                            weight decay, and regularization to achieve loss convergence
+                                            in about 2000 epochs. The images were captured with an
+                                            Intel Realsense D435 camera. All tools are open-source
+                                            available from the dataset documentations [35], [36].
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                          <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                Object and Key point Detection
+                                            </button>
+                                          </h5>
+                                        </div>
+                                    
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                          <div class="card-body">
+                                            Fig. 3b and 3d present the output of the trained multitask models on the two use cases with results for object
+                                            detection and segmentation, and key point estimations. This
+                                            demonstrates that a single multi-task model can utilize multiple data annotation formats as part of the dataset, train a
+                                            model and achieve successful detection outputs. On average,
+                                            the detection confidence is over 90 percent. Furthermore, as
+                                            main beneficial outcome Table II presents that the achieved
+                                            frame rate of the multi-task model is higher than running
+                                            multiple models in parallel. For high-resolution camera input
+                                            (1280×720), the difference is almost double, i.e., 8.7 FPS
+                                            versus 4.8 FPS, respectively. Likewise, the memory requirements for a multi-task model is less than running multiple
+                                            single-task models in parallel (i.e., 500 MB vs 700 MB).
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                          <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                Object Configuration and Depth Estimation
+                                            </button>
+                                          </h5>
+                                        </div>
+                                    
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                          <div class="card-body">
+                                            Two further functionalities are developed to demonstrate
+                                            the use of multiple detection format outputs from the multitask model. These are object configuration and depth estimation, based on the object segmentation masks and key points,
+                                            respectively. Segmentation masks generated by the multi-task
+                                            model can be used to determine rocker arm orientations with
+                                            respect to the image, with the 2nd order moment of the mask. 
+                                            The three estimated key points on the rocker arm then verify
+                                            correct configuration of the rocker arm object with respect
+                                            to the engine. The process for finding the outer side for the
+                                            correct configuration is to minimize the axis of the smallest
+                                            2nd order moment, then apply a cross-product between the
+                                            axis coordinates and predicted key points. The one key point
+                                            with an opposite sign to the others indicates the outer side.
+                                            Fig. 1 illustrates the correct orientation of the rocker arm
+                                            on the engine and verifies (in)correct placement.
+                                            To estimate the depth of the rocker arm target, with respect
+                                            to the camera, two methods were considered: by segmentation mask or by key points (see Fig. 3b). In both cases the
+                                            depth value from corresponding RGB pixel coordinates are
+                                            retrieved from a depth camera (Intel Realsense D435). For
+                                            a segmentation mask, the entire mask area as depth range
+                                            is taken and an average depth value is returned, and for a key point, a single depth value is returned. The key point
+                                            approach provides 10 times less difference in depth range
+                                            (i.e., 468 ± 5mm) as compared to the segmentation mask,
+                                            and is therefore found to be more reliable.
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                          <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                Discussion
+                                            </button>
+                                          </h5>
+                                        </div>
+                                    
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                          <div class="card-body">
+                                            The proposed approach enables images to be annotated by
+                                            multiple different labels, including bounding boxes, polygons
+                                            and key points, during a single annotation step, and store the
+                                            result in a single convenient format (COCO). The annotations
+                                            are then all included in the same data augmentation process
+                                            to collect a dataset utilized as input for training a multi-task
+                                            model. In effect, this provides a single model with multiple
+                                            detection outputs in different detection formats (bounding
+                                            box, segmentation masks and key points). Compared to
+                                            single-task models that only consider single annotation format input and detection output, the following benefits are
+                                            identified. 1. Time-saving for image annotation and augmentation. All annotations can be done in a single image,
+                                            without changing any formats for different annotation types.
+                                            For example, in case of a single task-model, one image would
+                                            need to be annotated three times separately for three different
+                                            annotation types. 2. Memory space requirements saving in
+                                            model training. As only a single multi-task model needs to
+                                            be trained instead of multiple single-task models, size of the
+                                            model is reduced. 3. Combining detection outputs. Detection modalities from the multi-task model can be combined to
+                                            solve additional detection tasks, not directly provided by the
+                                            model. For example, depth and object configuration from key
+                                            points as shown by our use cases, or other post-prediction
+                                            applications such as boundary or grasp pose detection, or the
+                                            estimation of object properties.
+                                            
+                                            A current limitation of the annotation pipeline is that it
+                                            relies on existing annotation (Label Studio [9]) and augmentation (Albumentations [8]) tools. While these tools can be
+                                            used under an open source license, access and support might
+                                            change over time. Another limitation is that, still, annotation
+                                            is a time-consuming step in the process of generating a
+                                            learning-based detection model. Selection of which data to
+                                            annotate and in which format (e.g., depth from pixel masks
+                                            or key points) requires manual decisions and an iterative
+                                            process to select a best outcome for the tasks. Automated
+                                            and interactive annotation (e.g., based on machine learning
+                                            [23], [37]) and semi-automated, interactive image annotation
+                                            for visual detection exist [38], but are still in early stages of
+                                            research. This is a natural next-step in developing assistive
+                                            tools for model training and planned as future work.
+                                          </div>
+                                        </div>
+                                      </div>
+                                </div>
                             </div>
                         </div>
-
+                        <div class="refrences d-none">
+                            <div class="paperHeadings">References</div>
+                            <div class="headDesc">
+                            </div>
+                        </div>
                     </div>
                     <!--div class="frontPageImages">
                         <div><img class="imageStyling" src="assets/images/bolts.gif"></div>
