@@ -1,4 +1,4 @@
-# Detection-Segmentation-and-Feature-estimation-pipeline
+# Multi-label Annotation for Visual Multi-Task Learning Models
 
 The scripts are based on the official [label studio](https://labelstud.io/) and [albumentation](https://albumentations.ai/) libraries.
 Here is the link to our training dataset of [Engine Assembly](https://zenodo.org/record/7669593#.ZA2TJNJBxH6)
