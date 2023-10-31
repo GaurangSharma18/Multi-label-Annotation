@@ -253,6 +253,9 @@ main {
   float:right;
   width: 45%;
 }
+.navMenuIconWrapper {
+  display:none;
+}
 
 
 
@@ -260,9 +263,46 @@ main {
   .detailsWrapper{
     padding:0;
   }
-  .vertical-nav{
-    min-width: 15rem;
+  .toggleNav {
+    width: 100%;
   }
+  .contentWrapper {
+    width:100%
+  }
+  .navList {
+    display:none;
+  }
+  .navMenuIconWrapper {
+    display:block;
+    text-align: right;
+  }
+
+  .navMenuIconWrapper a {
+    color:#fff;
+    padding:1rem;
+    cursor: pointer;
+  }
+  .navMenuIconWrapper a:hover,.navMenuIconWrapper a:focus {
+    color:#FFE5B4;
+  }
+  .paperSectionWrapper {
+    padding:0 1rem;
+  }
+  .navListItem {
+    padding: 1rem 2rem 1rem 2rem;
+}
+.paperTitle {
+  font-size: 2.6rem;
+}
+.paperAuthors {
+  font-size: 1.6rem;
+}
+.heroButtons {
+  margin:0.5rem;
+}
+.paperHeadings {
+  margin-top: 2rem;
+}
 }
 
 
