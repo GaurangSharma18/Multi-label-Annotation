@@ -75,3 +75,8 @@ $(document).ready(function() {
     $('.Methodology').addClass('d-none');
     $('.refrences').removeClass('d-none');
   });
+
+  $( ".navMenuIconWrapper a" ).click(function() {
+    console.log('clicked')
+    $('.navList').toggleClass('d-block');
+  });
