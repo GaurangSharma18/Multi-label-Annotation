@@ -212,24 +212,24 @@ main {
   border-radius: 1.2rem;
 }
 
-.RelatedWork #accordion .card, .Methodology #accordion .card, .Results #accordion .card {
+.RelatedWork .accordion .card, .Methodology .accordion .card, .Results .accordion .card {
   border-radius: 1.5rem;
   margin-bottom: 1rem;
 }
-.RelatedWork #accordion .card-header, .Methodology #accordion .card-header, .Results #accordion .card-header {
+.RelatedWork .accordion .card-header, .Methodology .accordion .card-header, .Results .accordion .card-header {
   background-color: #14213d;
   border-radius: 1.5rem;
 }
 
 
-.RelatedWork #accordion .card-header .btn-link, .Methodology #accordion .card-header .btn-link, .Results #accordion .card-header .btn-link {
+.RelatedWork .accordion .card-header .btn-link, .Methodology .accordion .card-header .btn-link, .Results .accordion .card-header .btn-link {
   
   font-size: 1.6rem;
   color: #fff;
   cursor: pointer;
 }
 
-.RelatedWork #accordion .card-header .btn-link:hover, .Methodology #accordion .card-header .btn-link:hover, .Results #accordion .card-header .btn-link:hover {
+.RelatedWork .accordion .card-header .btn-link:hover, .Methodology .accordion .card-header .btn-link:hover, .Results .accordion .card-header .btn-link:hover {
   text-decoration: none;
   color:#FFE5B4;
 }
@@ -245,7 +245,7 @@ main {
 
 
 .accordianImage {
-  width:100%;
+  width: 95%;
   margin:2rem;
 }
 
