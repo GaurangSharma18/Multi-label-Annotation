@@ -257,6 +257,10 @@ main {
   display:none;
 }
 
+.resultTable {
+  width:50%
+}
+
 
 
 @media (max-width: 1000px) {
@@ -305,6 +309,9 @@ main {
 }
 .accordianImage {
   margin:0.5rem;
+}
+.resultTable {
+  width:50%
 }
 }
 
