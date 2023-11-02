@@ -261,6 +261,10 @@ main {
   width:50%
 }
 
+.reference {
+  margin: 1rem;
+}
+
 
 
 @media (max-width: 1000px) {
